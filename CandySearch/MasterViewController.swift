@@ -25,7 +25,8 @@ import UIKit
 class MasterViewController: UITableViewController {
     
     // MARK: - Properties
-     var candies = [Candy]()
+    var detailViewController: DetailViewController? = nil
+    var candies = [Candy]()
     
     var filteredCandies = [Candy]()
     
@@ -55,7 +56,11 @@ class MasterViewController: UITableViewController {
             Candy(category:"Other", name:"Gummi Bear")
         ]
         
-         
+        
+        if let splitViewController = splitViewController {
+            let controllers = splitViewController.viewControllers
+            detailViewController = (controllers[controllers.count - 1] as! UINavigationController).topViewController as? DetailViewController
+        }
     }
     
     
